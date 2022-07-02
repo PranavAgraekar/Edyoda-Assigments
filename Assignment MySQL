@@ -34,10 +34,8 @@ insert into Orders(Onum,Amt,Odate,Cnum,Snum) values(3008,4273.00,'1990-10-5',200
 insert into Orders(Onum,Amt,Odate,Cnum,Snum) values(3010,1309.95,'1990-10-6',2004,1002);
 insert into Orders(Onum,Amt,Odate,Cnum,Snum) values(3011,9891.88,'1990-10-6',2006,1001);
 select * from Orders;
-select count(*)from SalesPeople where Sname like'%a';
-select sname from SalesPeople Inner Join Orders on SalesPeople.snum=Orders.snum where Amt>2000;
-select sname from salespeople s left join orders o on s.snum=o.snum where o.amt>2000;
+select count(*)from SalesPeople where Sname like'a$' or 'A%';
+select sname,sum(amt) from salespeople Inner Join Orders on salespeople.snum=orders.snum where amt>2000 group by sname;
 select count(*) from SalesPeople where city='London' or city='Paris';
-select o.odate,s.sname from orders o left join salespeople s on o.snum=s.snum;
-select sname,Odate from Orders Inner Join SalesPeople on SalesPeople.snum=Orders.snum;
+SELECT Odate, snum, count(*) FROM orders GROUP BY snum;
 select count(*) from SalesPeople where city='Newyork';
